@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 
 class Weather extends Component {
     render() {
+        const { temperature, city, country, humidity, description, error} = this.props.blob;
         return (
             <div>
-                Weather component
+                <p>Location: {city}, {country}</p>
             </div>
         )
     }
