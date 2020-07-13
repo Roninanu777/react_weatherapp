@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Weather extends Component {
-    render() {
-        const { temperature, city, country, humidity, description, error} = this.props.blob;
-        return (
-            <div>
-                <p>Location: {city}, {country}</p>
-            </div>
-        )
-    }
+function Weather(props) {
+    const { temperature, city, country, humidity, description, error} = props.blob;
+    return (
+        <div>
+            { city && country && <p>Location: {city}, {country}</p> }
+            { temperature && <p>Temperature: {temperature} </p> }
+            { humidity && <p>Humidity: {humidity} </p> }
+            { description && <p>Conditions: {description}</p> }
+            { error && <p>{error}</p> }
+        </div>
+    )
 }
 
-export default Weather
+export default Weather;

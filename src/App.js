@@ -31,6 +31,15 @@ class App extends Component {
         description: data.weather[0].description,
         error: (data.cod === "404")? data.message : null
       })
+    }else{
+      this.setState({
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: "Please enter your location!"
+      })
     }
   }
 
