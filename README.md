@@ -1,3 +1,8 @@
+This is a mini-project where I coded a weather app using React.
+To run this first create an `API_KEY` from [Open Weather Map](https://openweathermap.org/) and `paste the key where ever needed`.<br />
+
+Then you need to run `npm install` to install the `node_modules` and thats it.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
