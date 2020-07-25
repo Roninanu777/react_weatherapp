@@ -3,6 +3,7 @@ To run this first create an `API_KEY` from [Open Weather Map](https://openweathe
 
 Then you need to run `npm install` to install the `node_modules` and thats it.
 
+<hr />
 
 ### `npm start`
 
