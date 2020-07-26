@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkedAlt, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -22,6 +22,14 @@ const P = styled.p`
     font-family: 'Varela Round', sans-serif;
 `;
 
+const Add = styled.div`
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: #71d1cf;
+`;
+
 class OtherLocWeather extends Component {
     render() {
         return (
@@ -30,6 +38,9 @@ class OtherLocWeather extends Component {
                     <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                     <P>Other Locations</P>
                 </Other>
+                <Add>
+                    <FontAwesomeIcon style={{cursor: 'pointer'}} icon={faPlusCircle} size='2x'></FontAwesomeIcon>
+                </Add>
             </Container>
         )
     }

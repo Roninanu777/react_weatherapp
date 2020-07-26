@@ -1,7 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 //-------------------------------------------------------------------------------------------------------
+const Up = keyframes`
+    top: -1rem;
+`;
+
 const Container = styled.div`
     background-color: white;
     display: flex;
@@ -10,17 +14,21 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 2rem 3rem;
+    padding: 2rem 1.5rem;
     transition: all 0.2s ease;
     border-radius: 5px;
-    box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.05);
+    box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.01);
+    &:hover{
+        box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.1);
+        animation: ${Up} 0.2s ease-out;
+    }
 `;
 
 const Condition = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
-    margin: 2rem 0;
+    margin: 1.7rem 0;
     justify-content: space-evenly;
 `;
 
@@ -38,17 +46,36 @@ const City = styled.p`
 function Weather(props) {
     const { temperature, city, country, loader, status, description, icon, error} = props.blob;
     const weather_icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+    const renderContent = () => {
+        if(status === 'fetching'){
+            return loader;
+        }
+        else if(status === 'fetched'){
+            return (
+                <React.Fragment>
+                    { city && country && <City>{city}, {country}</City> }
+                    <Condition>
+                        { icon && <img src={weather_icon} alt="weather-icon" />}
+                        { temperature && <Temp>{temperature.toFixed()}°C</Temp> }
+                    </Condition>
+                    { description && <p style={{color: '#3aafa9'}}>{description}</p> }
+                </React.Fragment>
+            )
+        }
+        else if(status === 'unable'){
+            return <p style={{color: 'red', padding: '1rem 0', fontFamily: "'Varela Round', sans-serif", fontSize: '1.2rem'}}>{error}</p>
+        }
+        else{
+            return <p style={{color: 'red', padding: '1rem 0'}}>{error}</p>
+        }
+        
+    }
+
     return (
         <React.Fragment>
             <Container>
-                { (status == 'fetching') ? loader : <></>}
-                { city && country && <City>{city}, {country}</City> }
-                <Condition>
-                    { icon && <img src={weather_icon} alt="weather-icon" />}
-                    { temperature && <Temp>{temperature.toFixed()}°C</Temp> }
-                </Condition>
-                { description && <p style={{color: '#3aafa9'}}>{description}</p> }
-                { error && <p>{error}</p> }
+                {renderContent()}
             </Container>
         </React.Fragment>
     )

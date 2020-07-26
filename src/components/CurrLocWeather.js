@@ -50,7 +50,7 @@ class CurrLocWeather extends Component{
         }
 
         const error = () => {
-            this.setState({status: 'unable', error: 'Allow location access'});
+            this.setState({status: 'unable', error: 'Please enable location access'});
         }
 
         if(navigator.geolocation){
