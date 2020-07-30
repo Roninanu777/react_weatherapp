@@ -56,7 +56,7 @@ function Weather(props) {
                         { icon && <img src={weather_icon} alt="weather-icon" />}
                         { temperature && <Temp>{temperature.toFixed()}°C</Temp> }
                     </Condition>
-                    { description && <p style={{color: '#3aafa9'}}>{description}</p> }
+                    { description && <p style={{color: '#2b7a78'}}>{description}</p> }
                 </React.Fragment>
             )
         }
