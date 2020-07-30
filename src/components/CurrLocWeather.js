@@ -5,9 +5,6 @@ import Loader from './Loader';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const API_KEY = '2870e042874453c6dfd4719bc74e5778';
-
-
 const CurrLoc = styled.div`
     display: flex;
     flex-direction: column;
@@ -64,7 +61,7 @@ class CurrLocWeather extends Component{
     }
 
     getWeatherData = (lat, lon) => {
-        const weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
+        const weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
         fetch(weatherApi, { signal: this.controllerSignal })
         .then(response => response.json())
         .then((result) => {
