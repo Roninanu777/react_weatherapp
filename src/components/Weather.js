@@ -42,7 +42,7 @@ const City = styled.p`
 
 function Weather(props) {
     const { temperature, city, country, loader, status, description, icon, error} = props.blob;
-    const weather_icon = `${process.env.PROXY}openweathermap.org/img/wn/${icon}@2x.png`;
+    const weather_icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
     const renderContent = () => {
         if(status === 'fetching'){
