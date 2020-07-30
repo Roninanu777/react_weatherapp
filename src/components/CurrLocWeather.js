@@ -68,7 +68,6 @@ class CurrLocWeather extends Component{
         fetch(weatherApi, { signal: this.controllerSignal })
         .then(response => response.json())
         .then((result) => {
-            console.log(result);
             const { name } = result;
             const { country } = result.sys;
             const { temp, humidity } = result.main;
