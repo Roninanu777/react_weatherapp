@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, {keyframes} from 'styled-components';
+import styled from 'styled-components';
 
 //-------------------------------------------------------------------------------------------------------
 const Container = styled.div`
@@ -42,7 +42,7 @@ const City = styled.p`
 
 function Weather(props) {
     const { temperature, city, country, loader, status, description, icon, error} = props.blob;
-    const weather_icon = `${process.env.REACT_APP_PROXY}openweathermap.org/img/wn/${icon}@2x.png`;
+    const weather_icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
 
     const renderContent = () => {
         if(status === 'fetching'){
