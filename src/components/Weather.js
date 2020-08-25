@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// Styles
 //-------------------------------------------------------------------------------------------------------
+
 const Container = styled.div`
     background-color: white;
     display: flex;
@@ -38,19 +40,19 @@ const City = styled.p`
     font-size: 1.3rem;
     margin-bottom: 1rem;
 `;
+
+const P = styled.p`
+    color: red;
+    padding: 1rem 0;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1rem
+`;
+
 //-------------------------------------------------------------------------------------------------------
 
 function Weather(props) {
     const { temperature, city, country, loader, status, description, icon, error} = props.blob;
     const weather_icon = `http://openweathermap.org/img/wn/${icon}@2x.png`;
-    fetch(`http://openweathermap.org/img/wn/${icon}@2x.png`, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-            'Content-Security-Policy': 'upgrade-insecure-requests'
-        }
-    })
-    .then( response => console.log(response));
 
     const renderContent = () => {
         if(status === 'fetching'){
@@ -69,10 +71,10 @@ function Weather(props) {
             )
         }
         else if(status === 'unable'){
-            return <p style={{color: 'red', padding: '1rem 0', fontFamily: "'Varela Round', sans-serif", fontSize: '1.2rem'}}>{error}</p>
+            return <P>{error}</P>
         }
         else{
-            return <p style={{color: 'red', padding: '1rem 0'}}>{error}</p>
+            return <P>{error}</P>
         }
         
     }

@@ -3,10 +3,13 @@ import styled from 'styled-components';
 import { faMapMarkedAlt, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Styles
+//----------------------------------------------------------------------------------//
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2.5rem;
 `;
@@ -26,9 +29,11 @@ const Add = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
+    margin-top: 3rem;
     justify-content: center;
-    color: #71d1cf;
 `;
+
+//----------------------------------------------------------------------------------//
 
 class OtherLocWeather extends Component {
     render() {
@@ -38,8 +43,9 @@ class OtherLocWeather extends Component {
                     <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                     <P>Other Locations</P>
                 </Other>
+                <P style={{color: 'red'}}>Click below to add locations</P>
                 <Add>
-                    <FontAwesomeIcon style={{cursor: 'pointer'}} icon={faPlusCircle} size='2x'></FontAwesomeIcon>
+                    <FontAwesomeIcon style={{fontSize: '1.7rem', color: '#5cc1d1'}} icon={faPlusCircle} size='2x'></FontAwesomeIcon>
                 </Add>
             </Container>
         )
