@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { faMapMarkedAlt, faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faMapMarkedAlt, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Modal from './Modal';
 
 // Styles
 //----------------------------------------------------------------------------------//
@@ -33,23 +34,38 @@ const Add = styled.div`
     justify-content: center;
 `;
 
+const AddError = styled(P)`
+    color: red;
+    font-size: 1rem;
+`;
+
+const Button = styled.button`
+    border: none;
+    padding: 7px 10px;
+    border-radius: 50%;
+    background-color: #2b7a78;
+    outline: none;
+    cursor: pointer;
+`;
+
 //----------------------------------------------------------------------------------//
 
-class OtherLocWeather extends Component {
-    render() {
-        return (
-            <Container>
-                <Other>
-                    <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
-                    <P>Other Locations</P>
-                </Other>
-                <P style={{color: 'red'}}>Click below to add locations</P>
-                <Add>
-                    <FontAwesomeIcon style={{fontSize: '1.7rem', color: '#5cc1d1'}} icon={faPlusCircle} size='2x'></FontAwesomeIcon>
-                </Add>
-            </Container>
-        )
-    }
+const OtherLocWeather = () => {
+    let [clicked, setClicked] = useState(false);
+
+    
+    return (
+        <Container>
+            <Other>
+                <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
+                <P>Other Locations</P>
+            </Other>
+            { clicked ? <Modal /> : <AddError>Click below to add locations</AddError>}
+            <Add>
+                <Button onClick={() => setClicked(!clicked)}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
+            </Add>
+        </Container>
+    )
 }
 
 export default OtherLocWeather;

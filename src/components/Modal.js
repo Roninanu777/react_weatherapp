@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Form from './Form';
 import Weather from './Weather';
 
@@ -25,7 +25,6 @@ class Modal extends Component {
     temperature: undefined,
     city: undefined,
     country: undefined,
-    humidity: undefined,
     description: undefined,
     error: undefined
   }
@@ -44,22 +43,20 @@ class Modal extends Component {
     const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
 
-    if(city && country){
+    if (city && country) {
       this.setState({
         isLoaded: true,
         temperature: data.main.temp,
         city: city,
         country: country,
-        humidity: data.main.humidity,
         description: data.weather[0].description,
-        error: (data.cod === "404")? data.message : null
+        error: (data.cod === "404") ? data.message : null
       })
-    }else{
+    } else {
       this.setState({
         temperature: undefined,
         city: undefined,
         country: undefined,
-        humidity: undefined,
         description: undefined,
         error: "Please enter your location!"
       })
@@ -68,12 +65,9 @@ class Modal extends Component {
 
   render() {
     return (
-      <Container>
-        <WeatherContainer>
-          <Form getWeather={this.getWeather} />
-          <Weather blob={this.state}/>
-        </WeatherContainer>
-      </Container>
+      <WeatherContainer>
+        <Form getWeather={this.getWeather} />
+      </WeatherContainer>
     )
   }
 }
