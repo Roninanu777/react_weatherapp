@@ -4,6 +4,10 @@
   box-sizing: inherit;
 }
 
+html{
+  overflow: hidden;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
