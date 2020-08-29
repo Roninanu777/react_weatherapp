@@ -1,17 +1,19 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import SearchedCity from './SearchedCity';
+import Loader from './Loader';
+import { faMapPin } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const API_KEY = '2870e042874453c6dfd4719bc74e5778';
-
+// Styles
 //--------------------------------------------------------------------------//
 
-const Form = styled.div`
-    padding: 3rem 0;
+const Form = styled.form`
+    padding: 3rem 2rem;
     background-color: #bfdfe0;
     border-radius: 5px;
     display: flex;
+    width: 30%;
     justify-content: center;
     flex-direction: row;
     font-family: 'Varela Round', sans-serif;
@@ -20,20 +22,23 @@ const Form = styled.div`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding: 9px;
-    background-color: #f7f7f7;
+    padding: 12px 9px;
+    width: 100%;
+    background-color: #fff;
     border-radius: 5px;
 `;
 
 const Btn = styled.button`
     outline: none;
-    padding: 7px 16px;
+    padding: .5em 1.5em;
     border-radius: 5px;
     background-color: #bfdfe0;
     margin-left: 1rem;
     border: 2px solid #2b7a78;
     color: #2b7a78;
     cursor: pointer;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 1.2rem;
     transition: all 0.1s ease-in;
     &:hover{
         background-color: #2b7a78;
@@ -41,76 +46,108 @@ const Btn = styled.button`
     }
 `;
 
+const ModalWrapper = styled.div`
+    position: absolute;
+    align-self: center;
+    width: 100vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-100vh)'}; 
+    opacity: ${props => props.show ? '1' : '0'};
+    transition: all 1s cubic-bezier(0.67, 0.08, 0.47, 1.15);
+`;
+
+const Country = styled.h3`
+    color: #0e0e0e;
+`;
+
+const City = styled.p`
+    color: #2b7a78;
+    font-size: 1.3rem;
+    margin-top: .5rem;
+`;
+
+const CityList = styled.div`
+    width: 100%;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-x: auto;
+    height: 39vh;
+    &::-webkit-scrollbar {
+        width: 0em;
+    }
+`;
+
 //--------------------------------------------------------------------------//
 
-class Modal extends Component {
-  state = {
-    status: 'init',
-    isLoaded: false,
-    temperature: undefined,
-    city: undefined,
-    country: undefined,
-    description: undefined,
-    error: undefined
-  }
+const Modal = (props) => {
+    const [city, setCity] = useState('');
+    const [cityData, setCityData] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState({});
 
-  handleInputChange = (e) => {
-    let city = e.target.value;
-    this.setState({city: city});
-  }
-
-  getWeather = async (e) => {
-
-    let city = this.state.city;
-    e.preventDefault();
-
-    //fetching city ids
-    try {
-      const city_info = await fetch(`https://fierce-castle-13645.herokuapp.com/weather?city=${city}`);
-      const city_data = await city_info.json();
-      let { id, name, country } = await city_data[0];
-      console.log(id, name);
-
-      const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${API_KEY}&units=metric`);
-      const data = await api_call.json();
-      console.log(data);
-
-      if (city && country) {
-        this.setState({
-          isLoaded: true,
-          temperature: data.main.temp,
-          city: city,
-          country: country,
-          description: data.weather[0].description,
-          error: (data.cod === "404") ? data.message : null
-        })
-      } else {
-        this.setState({
-          temperature: undefined,
-          city: undefined,
-          country: undefined,
-          description: undefined,
-          error: "Please enter your location!"
-        })
-      }
-    } catch (error) {
-      console.log(this.setState({error: error}))
+    const handleInputChange = (e) => {
+        setCity(e.target.value);
     }
 
-  }
-
-    render() {
-        return (
-            <div style={{ position: 'absolute',alignSelf: 'center',transform: this.props.show ? 'translateY(10vh)' : 'translateY(-100vh)', opacity: this.props.show ? '1' : '0'}}>
-                <FontAwesomeIcon onClick={this.props.close} style={{color: 'black', cursor: 'pointer', zIndex: 5}} size='2x' icon={faTimesCircle}></FontAwesomeIcon>
-                <Form onSubmit={this.getWeather}>
-                    <Input type="text" onChange={this.handleInputChange} name="city" placeholder="City..." />
-                    <Btn type="submit" onClick={this.getWeather}>Search</Btn>
-                </Form>
-                {this.state.error ? <p>City not found</p> : null}              
-            </div>
-        )
+    let getWeather = (e) => {
+        e.preventDefault();
+        setLoading(true)
+        fetch(`https://fierce-castle-13645.herokuapp.com/weather?city=${city}`)
+            .then(res => res.json())
+            .then(response => {
+                if(response.message){
+                    setError(response);
+                }
+                else{
+                    setCityData(response);
+                }
+                setLoading(false);
+            })
+            .catch(err => console.log(err));
     }
+
+    let renderCity = () => {
+        if(loading){
+            return (<SearchedCity><Loader /></SearchedCity>)
+        }
+        else{
+            if(cityData.length > 0){
+                return (
+                    <CityList>
+                        {cityData.map(city => {
+                            return (<SearchedCity key={city.id}>
+                            <Country><FontAwesomeIcon icon={faMapPin} style={{marginRight: '10px'}}></FontAwesomeIcon>{city.country}</Country>
+                            <City>{city.name}</City>
+                            </SearchedCity>)
+                        })}
+                    </CityList>
+                )
+            }
+            else if(error.message){
+                return (
+                    <SearchedCity><City style={{color: 'red'}}>{error.message}</City></SearchedCity>
+                )
+            }
+        }
+    }
+
+    return (
+        <ModalWrapper show={props.show}>
+            <Form type="submit" onSubmit={getWeather}>
+                <Input type="text" onChange={handleInputChange} placeholder="Enter city name..." />
+                <Btn type="submit">Search</Btn>
+            </Form>
+            {renderCity()}
+        </ModalWrapper>
+    )
+
 }
 
 export default Modal;
