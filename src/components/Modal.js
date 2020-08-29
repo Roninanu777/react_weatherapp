@@ -122,10 +122,12 @@ const Modal = (props) => {
                 return (
                     <CityList>
                         {cityData.map(city => {
-                            return (<SearchedCity key={city.id}>
-                            <Country><FontAwesomeIcon icon={faMapPin} style={{marginRight: '10px'}}></FontAwesomeIcon>{city.country}</Country>
-                            <City>{city.name}</City>
-                            </SearchedCity>)
+                            return (
+                                <SearchedCity key={city.id}>
+                                    <Country><FontAwesomeIcon icon={faMapPin} style={{marginRight: '10px'}}></FontAwesomeIcon>{city.country}</Country>
+                                    <City>{city.name}</City>
+                                </SearchedCity>
+                            )
                         })}
                     </CityList>
                 )
