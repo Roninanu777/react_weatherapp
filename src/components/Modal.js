@@ -77,7 +77,8 @@ const CityList = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    overflow-x: auto;
+    overflow-y: scroll;
+    scroll-behaviour: smooth;
     height: 39vh;
     &::-webkit-scrollbar {
         width: 0em;
@@ -96,16 +97,23 @@ const Modal = (props) => {
         setCity(e.target.value);
     }
 
+    let resetInput = () => {
+        return setCity('');
+    }
+
     let getWeather = (e) => {
         e.preventDefault();
         setLoading(true)
         fetch(`https://fierce-castle-13645.herokuapp.com/weather?city=${city}`)
             .then(res => res.json())
             .then(response => {
+                resetInput();
                 if(response.message){
                     setError(response);
+                    resetInput();
                 }
                 else{
+                    setError('');
                     setCityData(response);
                 }
                 setLoading(false);
@@ -118,7 +126,7 @@ const Modal = (props) => {
             return (<SearchedCity><Loader /></SearchedCity>)
         }
         else{
-            if(cityData.length > 0){
+            if(cityData.length > 0 && !error.message){
                 return (
                     <CityList>
                         {cityData.map(city => {
@@ -143,8 +151,8 @@ const Modal = (props) => {
     return (
         <ModalWrapper show={props.show}>
             <Form type="submit" onSubmit={getWeather}>
-                <Input type="text" onChange={handleInputChange} placeholder="Enter city name..." />
-                <Btn type="submit">Search</Btn>
+                <Input type="text" value={city} onChange={handleInputChange} placeholder="Enter city name..." />
+                <Btn type="submit" onClick={getWeather}>Search</Btn>
             </Form>
             {renderCity()}
         </ModalWrapper>
