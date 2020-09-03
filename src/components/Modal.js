@@ -94,6 +94,7 @@ const Modal = (props) => {
     const [error, setError] = useState({});
 
     const handleInputChange = (e) => {
+        setCityData(() => []);
         setCity(e.target.value);
     }
 
@@ -103,7 +104,7 @@ const Modal = (props) => {
 
     let getWeather = (e) => {
         e.preventDefault();
-        setLoading(true)
+        setLoading(true);
         fetch(`https://fierce-castle-13645.herokuapp.com/weather?city=${city}`)
             .then(res => res.json())
             .then(response => {
@@ -118,7 +119,7 @@ const Modal = (props) => {
                 }
                 setLoading(false);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(error));
     }
 
     let renderCity = () => {
