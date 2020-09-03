@@ -8,9 +8,9 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 100%;
     cursor: pointer;
-    padding: 2rem 2rem;
+    padding: 2rem;
     margin-top: 2rem;
     transition: all 0.2s ease;
     border-radius: 5px;

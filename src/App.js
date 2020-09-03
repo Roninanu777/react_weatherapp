@@ -8,9 +8,10 @@ import Modal from './components/Modal';
 
 const Overlay = styled.div`
     position: absolute;
-    background-color: rgba(85, 99, 99, 0.7);
+    background-color: rgb(85, 99, 99);
+    opacity: 0.7;
+    transition: all 1s ease-in;
     height: 100%;
-    transition: all 1.5s ease-in-out;
     width: 100%;
     align-self: center;
 `;
@@ -19,7 +20,7 @@ const Add = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 8%;
     justify-content: center;
 `;
 

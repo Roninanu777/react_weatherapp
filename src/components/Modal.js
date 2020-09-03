@@ -13,7 +13,7 @@ const Form = styled.form`
     background-color: #bfdfe0;
     border-radius: 5px;
     display: flex;
-    width: 30%;
+    width: 100%;
     justify-content: center;
     flex-direction: row;
     font-family: 'Varela Round', sans-serif;
@@ -49,10 +49,8 @@ const Btn = styled.button`
 const ModalWrapper = styled.div`
     position: absolute;
     align-self: center;
-    width: 100vw;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
+    width: 30%;
     flex-direction: column;
     align-items: center;
     transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-100vh)'}; 
@@ -74,12 +72,13 @@ const CityList = styled.div`
     width: 100%;
     margin-top: 1rem;
     display: flex;
+    padding: 0 2rem;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     overflow-y: scroll;
     scroll-behaviour: smooth;
-    height: 39vh;
+    height: 38vh;
     &::-webkit-scrollbar {
         width: 0em;
     }
