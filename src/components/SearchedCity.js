@@ -20,11 +20,13 @@ const Container = styled.div`
         transform: translateY(-3px);
     }
 `;
-
+let ids = [];
 const SearchedCity = (props) => {
+    
 
     let storeId = () => {
-        console.log(props.cityId);
+        ids.push(props.cityId);
+        localStorage.setItem('ids', JSON.stringify(ids));
         props.close();
     } 
 
