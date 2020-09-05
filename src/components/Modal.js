@@ -53,9 +53,9 @@ const ModalWrapper = styled.div`
     width: 30%;
     flex-direction: column;
     align-items: center;
-    transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-100vh)'}; 
+    transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-20vh)'}; 
     opacity: ${props => props.show ? '1' : '0'};
-    transition: all 1s cubic-bezier(0.67, 0.08, 0.47, 1.15);
+    transition: all .5s cubic-bezier(0.67, 0.08, 0.47, 1.15);
 `;
 
 const Country = styled.h3`
