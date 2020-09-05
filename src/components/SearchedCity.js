@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from  'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -22,8 +22,14 @@ const Container = styled.div`
 `;
 
 const SearchedCity = (props) => {
+
+    let storeId = () => {
+        console.log(props.cityId);
+        props.close();
+    } 
+
     return (
-        <Container>
+        <Container onClick={storeId}>
             {props.children}
         </Container>      
     )
