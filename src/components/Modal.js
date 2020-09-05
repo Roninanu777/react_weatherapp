@@ -32,17 +32,16 @@ const Btn = styled.button`
     outline: none;
     padding: .5em 1.5em;
     border-radius: 5px;
-    background-color: #bfdfe0;
     margin-left: 1rem;
     border: 2px solid #2b7a78;
-    color: #2b7a78;
+    background-color: #2b7a78;
+    color: white;
     cursor: pointer;
     font-family: 'Varela Round', sans-serif;
     font-size: 1.2rem;
     transition: all 0.1s ease-in;
     &:hover{
-        background-color: #2b7a78;
-        color: white;
+        
     }
 `;
 
@@ -121,8 +120,9 @@ const Modal = (props) => {
             .catch(err => console.log(error));
     }
 
+
     let renderCity = () => {
-        if(loading){
+        if(loading && city !== ''){
             return (<SearchedCity><Loader /></SearchedCity>)
         }
         else{
@@ -131,7 +131,7 @@ const Modal = (props) => {
                     <CityList>
                         {cityData.map(city => {
                             return (
-                                <SearchedCity key={city.id}>
+                                <SearchedCity close={props.close} cityId={city.id} key={city.id}>
                                     <Country><FontAwesomeIcon icon={faMapPin} style={{marginRight: '10px'}}></FontAwesomeIcon>{city.country}</Country>
                                     <City>{city.name}</City>
                                 </SearchedCity>
