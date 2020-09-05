@@ -61,7 +61,7 @@ class CurrLocWeather extends Component{
     }
 
     getWeatherData = (lat, lon) => {
-        const weatherApi = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+        const weatherApi = `${process.env.REACT_APP_BASEURL}?appid=${process.env.REACT_APP_API_KEY}&lat=${lat}&lon=${lon}&units=metric`;
         fetch(weatherApi, { signal: this.controllerSignal })
         .then(response => response.json())
         .then((result) => {
