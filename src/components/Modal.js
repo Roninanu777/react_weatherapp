@@ -120,7 +120,6 @@ const Modal = (props) => {
             .catch(err => console.log(error));
     }
 
-
     let renderCity = () => {
         if(loading && city !== ''){
             return (<SearchedCity><Loader /></SearchedCity>)
