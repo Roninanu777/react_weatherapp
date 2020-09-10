@@ -33,15 +33,16 @@ const Btn = styled.button`
     padding: .5em 1.5em;
     border-radius: 5px;
     margin-left: 1rem;
-    border: 2px solid #2b7a78;
-    background-color: #2b7a78;
-    color: white;
     cursor: pointer;
+    border: 2px solid #2b7a78;
+    background-color: #bfdfe0;
+    color: #2b7a78;
     font-family: 'Varela Round', sans-serif;
     font-size: 1.2rem;
     transition: all 0.1s ease-in;
     &:hover{
-        
+        background-color: #2b7a78;
+        color: white;
     }
 `;
 
