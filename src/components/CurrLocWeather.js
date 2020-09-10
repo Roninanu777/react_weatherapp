@@ -9,7 +9,7 @@ const CurrLoc = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     padding: 2rem;
 `;
 
@@ -22,6 +22,8 @@ const CurrIcon = styled.div`
 const P = styled.p`
     font-size: 1.1rem;
     font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    color: #4d4d4d;
 `;
 
 class CurrLocWeather extends Component{
@@ -101,7 +103,7 @@ class CurrLocWeather extends Component{
         return(
             <CurrLoc>
                 <CurrIcon>
-                    <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkerAlt} ></FontAwesomeIcon>
+                    <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkerAlt} ></FontAwesomeIcon>
                     <P>Current Location</P>
                 </CurrIcon>
                 <Weather blob={this.state} />
