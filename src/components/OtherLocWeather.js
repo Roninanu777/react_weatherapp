@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SavedLoc from './SavedLoc';
 
 // Styles
 //----------------------------------------------------------------------------------//
@@ -11,18 +12,19 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 2.5rem;
 `;
 
 const Other = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 `;
 
 const P = styled.p`
     font-size: 1.1rem;
     font-family: 'Varela Round', sans-serif;
+    font-weight: bold;
+    color: #4d4d4d;
 `;
 
 const AddError = styled(P)`
@@ -30,18 +32,31 @@ const AddError = styled(P)`
     font-size: 1rem;
 `;
 
+const SavedCity = styled.div`
+    width: 100%;
+    height: 30vh;
+    padding: 0 1rem 1rem 1rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+        width: 0em;
+    }
+`;
+
 //----------------------------------------------------------------------------------//
 
 const OtherLocWeather = () => {
+    
 
     return (
         <Container>
             <Other>
-                <FontAwesomeIcon style={{marginRight: '.6rem'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
+                <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                 <P>Other Locations</P>
             </Other>
-            <AddError>Click below to add locations</AddError>
-            
+            <SavedCity>
+                <SavedLoc />
+            </SavedCity>
         </Container>
     )
 }
