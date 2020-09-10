@@ -20,34 +20,11 @@ const Container = styled.div`
         transform: translateY(-3px);
     }
 `;
-let ids = [];
-const SearchedCity = (props) => {
-    
 
-    let storeId = () => {
-        let exists = false;
-        if(ids.length > 0){
-            for(let i = 0; i < ids.length; i++){
-                if(ids[i] === props.cityId){
-                    exists = true;
-                    break;
-                }
-            }
-            if(!exists){
-                ids.push(props.cityId);
-                localStorage.setItem('ids', JSON.stringify(ids));
-            }
-            props.close();
-        }
-        else{
-            ids.push(props.cityId);
-            localStorage.setItem('ids', JSON.stringify(ids));
-            props.close();
-        }
-    } 
+const SearchedCity = (props) => {
 
     return (
-        <Container onClick={storeId}>
+        <Container>
             {props.children}
         </Container>      
     )
