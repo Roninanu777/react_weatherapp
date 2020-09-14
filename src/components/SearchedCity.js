@@ -1,4 +1,4 @@
-import React, {useState} from  'react';
+import React, {useEffect, useState} from  'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -20,14 +20,45 @@ const Container = styled.div`
         transform: translateY(-3px);
     }
 `;
-
 const SearchedCity = (props) => {
+    const [storedId, setId] = useLocalStorage('ids', []);
+
+    let handleId = () => {
+        let ids = JSON.parse(localStorage.getItem('ids')) || [];
+        setId([...ids, props.cityId]);
+    }
 
     return (
-        <Container>
+        <Container onClick={handleId}>
             {props.children}
-        </Container>      
+        </Container>
     )
 }
 
-export default SearchedCity
+
+const useLocalStorage = (key, initialValue) => {
+    const [storedId, setStoredValue] = useState(() => {
+      try {
+        const item = window.localStorage.getItem(key);
+        return item ? JSON.parse(item) : initialValue;
+      } catch (err) {
+        console.error(err);
+        return initialValue;
+      }
+    });
+  
+    const setValue = value => {
+      try {
+        const valueToStore =
+          value instanceof Function ? value(storedId) : value;
+        setStoredValue(valueToStore);
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  
+    return [storedId, setValue];
+};
+
+export default SearchedCity;
