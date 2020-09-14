@@ -30,6 +30,8 @@ const P = styled.p`
 const AddError = styled(P)`
     color: red;
     font-size: 1rem;
+    font-weight: 400;
+    margin-top: 1.5rem;
 `;
 
 const SavedCity = styled.div`
@@ -53,9 +55,7 @@ const OtherLocWeather = () => {
                 <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                 <P>Other Locations</P>
             </Other>
-            <SavedCity>
-                <SavedLoc />
-            </SavedCity>
+            <AddError>You don't have any saved location. Click below to add.</AddError>
         </Container>
     )
 }
