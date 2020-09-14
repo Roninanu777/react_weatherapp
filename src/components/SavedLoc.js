@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchedCity from './SearchedCity';
 
 const Container = styled.div`
     background-color: white;
@@ -24,22 +23,8 @@ const Container = styled.div`
 
 export default function SavedLoc() {
     return (
-        <>
-            <Container>
-                Saved
-            </Container>
-            <Container>
-                Saved
-            </Container>
-            <Container>
-                Saved
-            </Container>
-            <Container>
-                Saved
-            </Container>
-            <Container>
-                Saved
-            </Container>
-        </>
+        <Container>
+            
+        </Container>
     )
 }
