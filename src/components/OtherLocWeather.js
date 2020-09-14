@@ -34,7 +34,6 @@ const AddError = styled(P)`
 
 const SavedCity = styled.div`
     width: 100%;
-    height: 30vh;
     padding: 0 1rem 1rem 1rem;
     overflow-x: scroll;
     scroll-behavior: smooth;
