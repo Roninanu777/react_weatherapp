@@ -22,8 +22,10 @@ const Form = styled.form`
 const Input = styled.input`
     border: none;
     outline: none;
-    padding: 12px 9px;
+    padding: .8rem .5rem;
     width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .9rem;
     background-color: #fff;
     border-radius: 5px;
 `;
@@ -151,7 +153,7 @@ const Modal = (props) => {
     return (
         <ModalWrapper show={props.show}>
             <Form type="submit" onSubmit={getWeather}>
-                <Input type="text" value={city} onChange={handleInputChange} placeholder="Enter city name..." />
+                <Input type="text" value={city} onChange={handleInputChange} placeholder="Enter city name and press enter..." />
                 <Btn type="submit" onClick={getWeather}>Search</Btn>
             </Form>
             {renderCity()}
