@@ -50,7 +50,7 @@ class App extends Component {
       return (
         <React.Fragment>
           <CurrLocWeather />
-          <OtherLocWeather />
+          <OtherLocWeather show={this.state.open} />
           <Add>
               <Button onClick={this.handleOpen}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
           </Add>
