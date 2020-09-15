@@ -28,10 +28,11 @@ const P = styled.p`
 `;
 
 const AddError = styled(P)`
-    color: red;
+    color: #ed4040;
     font-size: 1rem;
     font-weight: 400;
     margin-top: 1.5rem;
+    text-align: center;
 `;
 
 const SavedCity = styled.div`
@@ -46,8 +47,14 @@ const SavedCity = styled.div`
 
 //----------------------------------------------------------------------------------//
 
-const OtherLocWeather = () => {
-    
+const OtherLocWeather = ({ show }) => { 
+    const [ids, setIds] = useState([]);
+
+    useEffect(() => {
+        if(show === false){
+            setIds(() => localStorage.getItem('ids') ? [...JSON.parse(localStorage.getItem('ids'))] : []);
+        }
+    }, [show]);
 
     return (
         <Container>
