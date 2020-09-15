@@ -26,6 +26,7 @@ const SearchedCity = (props) => {
     let handleId = () => {
         let ids = JSON.parse(localStorage.getItem('ids')) || [];
         setId([...ids, props.cityId]);
+        props.close();
     }
 
     return (
