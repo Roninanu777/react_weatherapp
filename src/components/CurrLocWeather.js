@@ -54,7 +54,9 @@ class CurrLocWeather extends Component{
 
         if(navigator.geolocation){
             this.setState({status: 'fetching', loader: <Loader />});
-            navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(success, error, {
+                enableHighAccuracy : true
+            });
         }
         else{
             this.setState({status: 'unsupported'});
