@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedLoc from './SavedLoc';
@@ -49,6 +50,7 @@ const SavedCity = styled.div`
 
 const OtherLocWeather = ({ show }) => { 
     const [ids, setIds] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         if(show === false){
@@ -56,13 +58,30 @@ const OtherLocWeather = ({ show }) => {
         }
     }, [show]);
 
+    useEffect(() => {
+        const fetchData = async () => {
+            if(ids.length > 0){
+                setData([]);
+                for(let i = 0; i < ids.length; i++){
+                    const result = await axios(`${process.env.REACT_APP_BASEURL}?id=${ids[i]}&appid=${process.env.REACT_APP_API_KEY}`);
+                    setData(prev => [...prev, result]);
+                }
+            }
+        }
+        fetchData();
+    }, [ids]);
+
+    useEffect(() => {
+
+    })
+
     return (
         <Container>
             <Other>
                 <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                 <P>Other Locations</P>
             </Other>
-            <AddError>You don't have any saved location. Click below to add.</AddError>
+            {data ? <SavedLoc /> : <AddError>You don't have any saved location. Click below to add.</AddError>}
         </Container>
     )
 }
