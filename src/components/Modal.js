@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import SearchedCity from './SearchedCity';
 import Loader from './Loader';
@@ -95,12 +95,15 @@ const Modal = (props) => {
     const [error, setError] = useState({});
 
     const handleInputChange = (e) => {
-        setCityData(() => []);
         setCity(e.target.value);
     }
 
     let resetInput = () => {
         return setCity('');
+    }
+
+    let resetData = () => {
+        return setCityData([]);
     }
 
     let getWeather = (e) => {
@@ -133,7 +136,7 @@ const Modal = (props) => {
                     <CityList>
                         {cityData.map(city => {
                             return (
-                                <SearchedCity close={props.close} cityId={city.id} key={city.id}>
+                                <SearchedCity close={props.close} reset={resetData} cityId={city.id} key={city.id}>
                                     <Country><FontAwesomeIcon icon={faMapPin} style={{marginRight: '10px'}}></FontAwesomeIcon>{city.country}</Country>
                                     <City>{city.name}</City>
                                 </SearchedCity>
