@@ -11,7 +11,7 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 1rem 0 0 0;
+    padding: 1rem 0 1rem 0;
     margin-top: 2rem;
     transition: all 0.2s ease;
     border-radius: 5px;
@@ -65,7 +65,7 @@ export default function SavedLoc({blob, loading}) {
 
     let renderSavedCity = () => {
         if(loading){
-            return <Container style={{paddingBottom: '1rem'}}><Loader /></Container>
+            return <Container><Loader /></Container>
         }
         else{
             return (
