@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CurrLocWeather from './components/CurrLocWeather';
 import OtherLocWeather from './components/OtherLocWeather';
 import Modal from './components/Modal';
@@ -14,23 +12,6 @@ const Overlay = styled.div`
     height: 100%;
     width: 100%;
     align-self: center;
-`;
-
-const Add = styled.div`
-    display: flex;
-    width: 100%;
-    align-items: center;
-    margin-top: 8%;
-    justify-content: center;
-`;
-
-const Button = styled.button`
-    border: none;
-    padding: 7px 10px;
-    border-radius: 50%;
-    background-color: #2b7a78;
-    outline: none;
-    cursor: pointer;
 `;
 
 class App extends Component {
@@ -50,10 +31,8 @@ class App extends Component {
       return (
         <React.Fragment>
           <CurrLocWeather />
-          <OtherLocWeather show={this.state.open} />
-          <Add>
-              <Button onClick={this.handleOpen}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
-          </Add>
+          <OtherLocWeather handleOpen={this.handleOpen} show={this.state.open} />
+          
           { this.state.open ? <Overlay onClick={this.handleClose} /> : null}
           <Modal show={this.state.open} close={this.handleClose} />
         </React.Fragment>
