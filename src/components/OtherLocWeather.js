@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faMapMarkedAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SavedLoc from './SavedLoc';
@@ -18,7 +19,6 @@ const Container = styled.div`
 const Other = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
 `;
 
 const P = styled.p`
@@ -36,21 +36,28 @@ const AddError = styled(P)`
     text-align: center;
 `;
 
-const SavedCity = styled.div`
+const Add = styled.div`
+    display: flex;
     width: 100%;
-    padding: 0 1rem 1rem 1rem;
-    overflow-x: scroll;
-    scroll-behavior: smooth;
-    &::-webkit-scrollbar {
-        width: 0em;
-    }
+    align-items: center;
+    margin-top: 4%;
+    justify-content: center;
+`;
+
+const Button = styled.button`
+    border: none;
+    padding: 7px 10px;
+    border-radius: 50%;
+    background-color: #2b7a78;
+    outline: none;
+    cursor: pointer;
 `;
 
 //----------------------------------------------------------------------------------//
 
-const OtherLocWeather = ({ show }) => { 
+const OtherLocWeather = ({ show, handleOpen }) => { 
     const [ids, setIds] = useState([]);
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         if(show === false){
@@ -64,16 +71,12 @@ const OtherLocWeather = ({ show }) => {
                 setData([]);
                 for(let i = 0; i < ids.length; i++){
                     const result = await axios(`${process.env.REACT_APP_BASEURL}?id=${ids[i]}&appid=${process.env.REACT_APP_API_KEY}`);
-                    setData(prev => [...prev, result]);
+                    setData(prev => [...prev, result.data]);
                 }
             }
         }
         fetchData();
     }, [ids]);
-
-    useEffect(() => {
-
-    })
 
     return (
         <Container>
@@ -81,7 +84,10 @@ const OtherLocWeather = ({ show }) => {
                 <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                 <P>Other Locations</P>
             </Other>
-            {data ? <SavedLoc /> : <AddError>You don't have any saved location. Click below to add.</AddError>}
+            <Add>
+              <Button onClick={handleOpen}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
+            </Add>
+            {data.length === ids.length ? <SavedLoc blob={data} /> : <AddError>You don't have any saved location. Click above to add.</AddError>}
         </Container>
     )
 }
