@@ -65,7 +65,7 @@ export default function SavedLoc({blob, loading}) {
 
     let renderSavedCity = () => {
         if(loading){
-            return <Container><Loader /></Container>
+            return <Container style={{paddingBottom: '1rem'}}><Loader /></Container>
         }
         else{
             return (
