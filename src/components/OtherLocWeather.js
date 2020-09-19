@@ -58,6 +58,7 @@ const Button = styled.button`
 const OtherLocWeather = ({ show, handleOpen }) => { 
     const [ids, setIds] = useState([]);
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if(show === false){
@@ -69,10 +70,13 @@ const OtherLocWeather = ({ show, handleOpen }) => {
         const fetchData = async () => {
             if(ids.length > 0){
                 setData([]);
+                setLoading(true)
                 for(let i = 0; i < ids.length; i++){
+                    
                     const result = await axios(`${process.env.REACT_APP_BASEURL}?id=${ids[i]}&appid=${process.env.REACT_APP_API_KEY}`);
                     setData(prev => [...prev, result.data]);
                 }
+                setLoading(false);
             }
         }
         fetchData();
@@ -87,7 +91,7 @@ const OtherLocWeather = ({ show, handleOpen }) => {
             <Add>
               <Button onClick={handleOpen}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
             </Add>
-            {data.length === ids.length ? <SavedLoc blob={data} /> : <AddError>You don't have any saved location. Click above to add.</AddError>}
+            {data.length > 0 ? <SavedLoc loading={loading} blob={data} /> : <AddError>You don't have any saved location. Click above to add.</AddError>}
         </Container>
     )
 }
