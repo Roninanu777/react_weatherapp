@@ -32,7 +32,6 @@ class App extends Component {
         <React.Fragment>
           <CurrLocWeather />
           <OtherLocWeather handleOpen={this.handleOpen} show={this.state.open} />
-          
           { this.state.open ? <Overlay onClick={this.handleClose} /> : null}
           <Modal show={this.state.open} close={this.handleClose} />
         </React.Fragment>
