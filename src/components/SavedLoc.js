@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Loader from './Loader';
 
 const Container = styled.div`
     background-color: white;
@@ -10,7 +11,7 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 2rem 0;
+    padding: 1rem 0 0 0;
     margin-top: 2rem;
     transition: all 0.2s ease;
     border-radius: 5px;
@@ -21,10 +22,71 @@ const Container = styled.div`
     }
 `;
 
-export default function SavedLoc() {
+const SavedCity = styled.div`
+    width: 100%;
+    padding: 0 1rem 1rem 1rem;
+    overflow-y: scroll;
+    height: 30vh;
+    margin-top: .5rem;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+        width: 0em;
+    }
+`;
+
+const City = styled.p`
+    font-size: 1rem;
+`;
+
+const Main = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+const Description = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
+const Condition = styled.p`
+    color: #2b7a78;
+`;
+
+const Temp = styled.p`
+    color: #2b7a78;
+    font-size: 2.5rem;
+    margin-right: 5%;
+`;
+
+export default function SavedLoc({blob}) {
+
+    let renderSavedCity = () => {
+        if(!blob){
+            return <Container><Loader /></Container>
+        }
+        else{
+            return (
+                blob.map(city => (
+                    <Container key={city.id}>
+                        <City>{`${city.name}, ${city.sys.country}`}</City>
+                        <Main>
+                            <Description>
+                                <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}></img>
+                                <Condition>{city.weather[0].main}</Condition>
+                            </Description>
+                            <Temp>{`${(city.main.temp - 273.15).toFixed()}°C`}</Temp>
+                        </Main>
+                    </Container>
+                ))
+            )
+        }
+    }
+
     return (
-        <Container>
-            
-        </Container>
+        <SavedCity>
+            {renderSavedCity()}
+        </SavedCity>
     )
 }
