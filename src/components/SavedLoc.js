@@ -36,6 +36,7 @@ const SavedCity = styled.div`
 
 const City = styled.p`
     font-size: 1rem;
+    font-weight: 600;
 `;
 
 const Main = styled.div`
@@ -60,10 +61,10 @@ const Temp = styled.p`
     margin-right: 5%;
 `;
 
-export default function SavedLoc({blob}) {
+export default function SavedLoc({blob, loading}) {
 
     let renderSavedCity = () => {
-        if(!blob){
+        if(loading){
             return <Container><Loader /></Container>
         }
         else{
