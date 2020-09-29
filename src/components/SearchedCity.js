@@ -10,7 +10,7 @@ const Container = styled.div`
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 2rem;
+    padding: 5%;
     margin-top: 2rem;
     transition: all 0.2s ease;
     border-radius: 5px;
