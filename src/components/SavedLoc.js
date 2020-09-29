@@ -23,9 +23,9 @@ const Container = styled.div`
 
 const SavedCity = styled.div`
     width: 100%;
-    padding: 0 1rem 1rem 1rem;
+
     overflow-y: scroll;
-    height: 30vh;
+    max-height: 30vh;
     margin-top: .5rem;
     scroll-behavior: smooth;
     &::-webkit-scrollbar {
