@@ -7,19 +7,22 @@ import styled from 'styled-components';
 const Container = styled.div`
     background-color: white;
     display: flex;
-    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 2rem;
+    padding: 3% 6%;
     transition: all 0.2s ease;
     border-radius: 5px;
     box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.07);
     &:hover{
         box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.16);
         transform: translateY(-3px);
+    }
+    @media (max-width: 450px){
+        width: 90%;
+        margin-top: 3%;
     }
 `;
 
@@ -28,17 +31,28 @@ const Condition = styled.div`
     align-items: center;
     width: 100%;
     margin: 1.7rem 0;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    @media (max-width: 450px){
+        justify-content: space-between;
+        margin: 1rem 0;
+    }
 `;
 
 const Temp = styled.p`
-    font-size: 3.5rem;
+    font-size: 3.8rem;
     color: #2b7a78;
+    @media (max-width: 450px){
+        font-size: 3rem;
+    }
 `;
 
 const City = styled.p`
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    @media (max-width: 450px){
+        font-size: 1.1rem;
+        margin-bottom: .5;
+    }
 `;
 
 const P = styled.p`
