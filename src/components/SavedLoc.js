@@ -23,7 +23,7 @@ const Container = styled.div`
 
 const SavedCity = styled.div`
     width: 100%;
-
+    padding: 3% 1% 3% 1%;
     overflow-y: scroll;
     max-height: 30vh;
     margin-top: .5rem;
