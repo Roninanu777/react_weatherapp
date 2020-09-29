@@ -5,18 +5,20 @@ import Loader from './Loader';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+//Styles--------------------------------------------------------------------------------------
+
 const CurrLoc = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 2rem;
+    margin-bottom: 2.5rem;
+    margin-top: 2.5rem;
 `;
 
 const CurrIcon = styled.div`
     display: flex;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 6%;
 `;
 
 const P = styled.p`
@@ -24,7 +26,12 @@ const P = styled.p`
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
     color: #4d4d4d;
+    @media (max-width: 450px){
+        font-size: .9rem;
+    }
 `;
+
+//Styles--------------------------------------------------------------------------------------
 
 class CurrLocWeather extends Component{
     state = {
