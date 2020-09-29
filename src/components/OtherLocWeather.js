@@ -44,7 +44,7 @@ const Add = styled.div`
     display: flex;
     width: 100%;
     align-items: center;
-    margin-top: 4%;
+    margin-top: 5%;
     justify-content: center;
 `;
 
@@ -52,9 +52,13 @@ const Button = styled.button`
     border: none;
     padding: 7px 10px;
     border-radius: 50%;
-    background-color: #2b7a78;
+    background-color: white;
     outline: none;
+    font-size: 2rem;
     cursor: pointer;
+    @media (max-width: 450px){
+        font-size: 1.7rem;
+    }
 `;
 
 //----------------------------------------------------------------------------------//
@@ -92,10 +96,11 @@ const OtherLocWeather = ({ show, handleOpen }) => {
                 <FontAwesomeIcon style={{marginRight: '.6rem',color: '#2b7a78'}} icon={faMapMarkedAlt}></FontAwesomeIcon>
                 <P>Other Locations</P>
             </Other>
-            <Add>
-              <Button onClick={handleOpen}><FontAwesomeIcon style={{fontSize: '1.7rem', color: 'white'}} icon={faPlus}></FontAwesomeIcon></Button>
-            </Add>
+            
             {data.length > 0 ? <SavedLoc loading={loading} blob={data} /> : <AddError>You don't have any saved location. Click above to add.</AddError>}
+            <Add>
+              <Button onClick={handleOpen}><FontAwesomeIcon style={{color: '#2b7a78'}} icon={faPlus}></FontAwesomeIcon></Button>
+            </Add>
         </Container>
     )
 }
