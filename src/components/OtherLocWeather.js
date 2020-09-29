@@ -14,6 +14,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 `;
 
 const Other = styled.div`
@@ -26,6 +27,9 @@ const P = styled.p`
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
     color: #4d4d4d;
+    @media (max-width: 450px){
+        font-size: .9rem;
+    }
 `;
 
 const AddError = styled(P)`
