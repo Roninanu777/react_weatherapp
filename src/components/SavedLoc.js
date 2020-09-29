@@ -5,14 +5,13 @@ import Loader from './Loader';
 const Container = styled.div`
     background-color: white;
     display: flex;
-    position: relative;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     cursor: pointer;
-    padding: 1rem 0 1rem 0;
-    margin-top: 2rem;
+    padding: 3% 0 2% 0;
+    margin-top: 3%;
     transition: all 0.2s ease;
     border-radius: 5px;
     box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.07);
@@ -37,6 +36,7 @@ const SavedCity = styled.div`
 const City = styled.p`
     font-size: 1rem;
     font-weight: 600;
+    margin-top: 1%;
 `;
 
 const Main = styled.div`
@@ -74,7 +74,7 @@ export default function SavedLoc({blob, loading}) {
                         <City>{`${city.name}, ${city.sys.country}`}</City>
                         <Main>
                             <Description>
-                                <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}></img>
+                                <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`} alt="weather-icon"></img>
                                 <Condition>{city.weather[0].main}</Condition>
                             </Description>
                             <Temp>{`${(city.main.temp - 273.15).toFixed()}°C`}</Temp>
