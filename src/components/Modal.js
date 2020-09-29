@@ -74,7 +74,7 @@ const CityList = styled.div`
     width: 100%;
     margin-top: 1rem;
     display: flex;
-    padding: 0 2rem;
+    padding: 0;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
