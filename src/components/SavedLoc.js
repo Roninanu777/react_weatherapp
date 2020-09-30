@@ -25,18 +25,23 @@ const SavedCity = styled.div`
     width: 100%;
     padding: 3% 1% 3% 1%;
     overflow-y: scroll;
-    max-height: 30vh;
+    max-height: 35vh;
     margin-top: .5rem;
     scroll-behavior: smooth;
     &::-webkit-scrollbar {
         width: 0em;
     }
+    @media (max-width: 450px){
+        width: 92%;
+    }
 `;
 
 const City = styled.p`
     font-size: 1rem;
-    font-weight: 600;
     margin-top: 1%;
+    @media (max-width: 450px){
+        font-size: .8rem;
+    }
 `;
 
 const Main = styled.div`
@@ -53,12 +58,18 @@ const Description = styled.div`
 
 const Condition = styled.p`
     color: #2b7a78;
+    @media (max-width: 450px){
+        font-size: .9rem;
+    }
 `;
 
 const Temp = styled.p`
     color: #2b7a78;
     font-size: 2.5rem;
     margin-right: 5%;
+    @media (max-width: 450px){
+        font-size: 1.5rem;
+    }
 `;
 
 export default function SavedLoc({blob, loading}) {
