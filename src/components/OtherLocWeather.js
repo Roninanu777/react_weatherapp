@@ -97,7 +97,7 @@ const OtherLocWeather = ({ show, handleOpen }) => {
                 <P>Other Locations</P>
             </Other>
             
-            {data.length > 0 ? <SavedLoc loading={loading} blob={data} /> : <AddError>You don't have any saved location. Click above to add.</AddError>}
+            {data.length > 0 ? <SavedLoc loading={loading} blob={data} /> : <AddError>You don't have any saved location. Click below to add.</AddError>}
             <Add>
               <Button onClick={handleOpen}><FontAwesomeIcon style={{color: '#2b7a78'}} icon={faPlus}></FontAwesomeIcon></Button>
             </Add>
