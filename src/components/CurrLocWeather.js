@@ -12,6 +12,9 @@ const CurrLoc = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 10% 0;
+    @media (max-width: 450px){
+        margin: 5% 0 10% 0;
+    }
 `;
 
 const CurrIcon = styled.div`
