@@ -11,8 +11,7 @@ const CurrLoc = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 2.5rem;
-    margin-top: 2.5rem;
+    margin: 10% 0;
 `;
 
 const CurrIcon = styled.div`
