@@ -38,6 +38,9 @@ const AddError = styled(P)`
     font-weight: 400;
     margin-top: 1.5rem;
     text-align: center;
+    @media (max-width: 450px){
+        font-size: .7rem;
+    }
 `;
 
 const Add = styled.div`
