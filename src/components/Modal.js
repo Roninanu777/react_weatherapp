@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 //--------------------------------------------------------------------------//
 
 const Form = styled.form`
-    padding: 3rem 2rem;
+    padding: 6% 4%;
     background-color: #bfdfe0;
     border-radius: 5px;
     display: flex;
@@ -17,13 +17,15 @@ const Form = styled.form`
     justify-content: center;
     flex-direction: row;
     font-family: 'Varela Round', sans-serif;
+    
 `;
 
 const Input = styled.input`
     border: none;
     outline: none;
     padding: .8rem .5rem;
-    width: 100%;
+    width: 90%;
+    margin-right: 5%;
     font-family: 'Montserrat', sans-serif;
     font-size: .9rem;
     background-color: #fff;
@@ -32,9 +34,8 @@ const Input = styled.input`
 
 const Btn = styled.button`
     outline: none;
-    padding: .5em 1.5em;
+    padding: 2% 5%;
     border-radius: 5px;
-    margin-left: 1rem;
     cursor: pointer;
     border: 2px solid #2b7a78;
     background-color: #bfdfe0;
@@ -43,6 +44,11 @@ const Btn = styled.button`
     font-size: 1.2rem;
     transition: all 0.1s ease-in;
     &:hover{
+        background-color: #2b7a78;
+        color: white;
+    }
+    @media (max-width: 450px){
+        font-size: 1rem;
         background-color: #2b7a78;
         color: white;
     }
@@ -58,6 +64,10 @@ const ModalWrapper = styled.div`
     transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-20vh)'}; 
     opacity: ${props => props.show ? '1' : '0'};
     transition: all .5s cubic-bezier(0.24, 1.01, 0.98, 1.04);
+    @media (max-width: 450px){
+        width: 95%;
+    }
+    
 `;
 
 const Country = styled.h3`
@@ -156,7 +166,7 @@ const Modal = (props) => {
     return (
         <ModalWrapper show={props.show}>
             <Form type="submit" onSubmit={getWeather}>
-                <Input type="text" value={city} onChange={handleInputChange} placeholder="Enter city name and press enter..." />
+                <Input type="text" value={city} onChange={handleInputChange} placeholder="Enter city name..."/>
                 <Btn type="submit" onClick={getWeather}>Search</Btn>
             </Form>
             {renderCity()}
