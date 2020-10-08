@@ -12,7 +12,7 @@ const CurrLoc = styled.div`
     flex-direction: column;
     align-items: center;
     margin: 10% 0;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         margin: 5% 0 10% 0;
     }
 `;
@@ -28,7 +28,7 @@ const P = styled.p`
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
     color: #4d4d4d;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: .9rem;
     }
 `;
