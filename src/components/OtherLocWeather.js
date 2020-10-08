@@ -27,7 +27,7 @@ const P = styled.p`
     font-family: 'Varela Round', sans-serif;
     font-weight: bold;
     color: #4d4d4d;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: .9rem;
     }
 `;
@@ -38,7 +38,7 @@ const AddError = styled(P)`
     font-weight: 400;
     margin-top: 1.5rem;
     text-align: center;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: .7rem;
     }
 `;
@@ -59,7 +59,7 @@ const Button = styled.button`
     outline: none;
     font-size: 2rem;
     cursor: pointer;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: 1.7rem;
     }
 `;
