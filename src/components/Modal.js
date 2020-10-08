@@ -47,7 +47,7 @@ const Btn = styled.button`
         background-color: #2b7a78;
         color: white;
     }
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: 1rem;
         background-color: #2b7a78;
         color: white;
@@ -64,7 +64,7 @@ const ModalWrapper = styled.div`
     transform: ${props => props.show ? 'translateY(10vh)' : 'translateY(-20vh)'}; 
     opacity: ${props => props.show ? '1' : '0'};
     transition: all .5s cubic-bezier(0.24, 1.01, 0.98, 1.04);
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         width: 95%;
     }
     
