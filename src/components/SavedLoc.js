@@ -31,7 +31,7 @@ const SavedCity = styled.div`
     &::-webkit-scrollbar {
         width: 0em;
     }
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         width: 92%;
     }
 `;
@@ -39,7 +39,7 @@ const SavedCity = styled.div`
 const City = styled.p`
     font-size: 1rem;
     margin-top: 1%;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: .8rem;
     }
 `;
@@ -58,7 +58,7 @@ const Description = styled.div`
 
 const Condition = styled.p`
     color: #2b7a78;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: .9rem;
     }
 `;
@@ -67,7 +67,7 @@ const Temp = styled.p`
     color: #2b7a78;
     font-size: 2.5rem;
     margin-right: 5%;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: 1.5rem;
     }
 `;
