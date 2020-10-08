@@ -20,7 +20,7 @@ const Container = styled.div`
         box-shadow: 0 .1rem 1rem 5px rgba(0,0,0,0.16);
         transform: translateY(-3px);
     }
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         width: 90%;
         margin-top: 3%;
     }
@@ -32,7 +32,7 @@ const Condition = styled.div`
     width: 100%;
     margin: 1.7rem 0;
     justify-content: space-around;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         justify-content: space-between;
         margin: 1rem 0;
     }
@@ -41,7 +41,7 @@ const Condition = styled.div`
 const Temp = styled.p`
     font-size: 3.8rem;
     color: #2b7a78;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: 3rem;
     }
 `;
@@ -49,7 +49,7 @@ const Temp = styled.p`
 const City = styled.p`
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    @media (max-width: 450px){
+    @media (max-width: 760px){
         font-size: 1.1rem;
         margin-bottom: .5;
     }
